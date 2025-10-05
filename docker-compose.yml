@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: HospitalDB
+      DB_USER: root
+      DB_PASS: example
+    depends_on:
+      - db
+    volumes:
+      - ./public:/var/www/html/public
+      - ./public/assets:/var/www/html/public/assets
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/1-database.sql:ro
+volumes:
+  dbdata:
