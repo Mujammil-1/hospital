@@ -1,13 +1,13 @@
-:root{--brand-primary:#1b6b93;--brand-secondary:#64ccc5;--brand-bg:#f5f9fc;--text-strong:#0f172a;--text-muted:#475569}
+:root{--brand-primary:#1b6b93;--brand-secondary:#64ccc5;--brand-bg:#fbfeff;--brand-bg-accent:rgba(27,107,147,0.03);--text-strong:#0f172a;--text-muted:#475569}
 
 html,body{height:100%}
-body{background:var(--brand-bg);color:var(--text-strong)}
+body{background:linear-gradient(180deg,var(--brand-bg),var(--brand-bg-accent));color:var(--text-strong)}
 
 .container{max-width:1200px}
 
-.app-header{display:flex;align-items:center;justify-content:center;gap:14px;background:#fff;border-radius:16px;padding:18px 22px;box-shadow:0 6px 18px rgba(0,0,0,.06);border:1px solid rgba(15,23,42,.05)}
-.app-logo{width:56px;height:56px}
-.app-title{font-weight:800;font-size:1.9rem;margin:0;letter-spacing:.2px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-secondary));-webkit-background-clip:text;background-clip:text;color:transparent}
+.app-header{display:flex;align-items:center;justify-content:center;gap:14px;background:#ffffffcc;border-radius:18px;padding:22px 26px;box-shadow:0 8px 22px rgba(0,0,0,.06);border:1px solid rgba(15,23,42,.06);backdrop-filter:blur(4px)}
+.app-logo{width:64px;height:64px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.app-title{font-weight:900;font-size:2.2rem;margin:0;letter-spacing:.3px;line-height:1;background:linear-gradient(90deg,var(--brand-primary),var(--brand-secondary));-webkit-background-clip:text;background-clip:text;color:transparent;text-transform:uppercase}
 
 .card{border:0;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
 .card-header{border:0;border-top-left-radius:14px;border-top-right-radius:14px;background:linear-gradient(90deg,var(--brand-primary),var(--brand-secondary));color:#fff;font-weight:600}
