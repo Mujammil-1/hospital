@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    container_name: hospital-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: HospitalDB
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+
+  server:
+    build: ./server
+    container_name: hospital-server
+    restart: unless-stopped
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=example
+      - DB_NAME=HospitalDB
+      - DB_PORT=3306
+      - PORT=3000
+      - CLIENT_ORIGIN=http://localhost:5173
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+volumes:
+  dbdata:
