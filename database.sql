@@ -224,3 +224,11 @@ SELECT
   b.AdmissionID
 FROM Bill b
 LEFT JOIN Patient p ON b.PatientID = p.PatientID;
+
+-- Admin users for login
+CREATE TABLE IF NOT EXISTS AdminUser (
+  AdminID INT AUTO_INCREMENT PRIMARY KEY,
+  Username VARCHAR(50) NOT NULL UNIQUE,
+  PasswordHash VARCHAR(255) NOT NULL,
+  CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

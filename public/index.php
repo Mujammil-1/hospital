@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/db.php';
 
 function h($v) { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
@@ -120,9 +121,15 @@ try {
 </head>
 <body class="bg-light">
   <div class="container py-4">
-    <div class="app-header mb-4">
-      <img src="/assets/hospital-logo.svg" alt="Hospital Logo" class="app-logo" />
-      <h1 class="app-title">Hospital Management System</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="app-header flex-grow-1 me-3">
+        <img src="/assets/hospital-logo.svg" alt="Hospital Logo" class="app-logo" />
+        <h1 class="app-title">Hospital Management System</h1>
+      </div>
+      <div class="text-end" style="min-width: 180px;">
+        <div class="small text-muted">Signed in as<br><strong><?= h($_SESSION['admin_username'] ?? 'Admin') ?></strong></div>
+        <a class="btn btn-outline-danger btn-sm mt-2" href="/logout.php">Logout</a>
+      </div>
     </div>
 
     <?php if ($insertMessage): ?>
